@@ -29,7 +29,7 @@ db.on("error", (err) => {
 });
 
 var app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -73,8 +73,8 @@ passport.use(new localStrategy(user.authenticate()));
 passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser());
 
-app.listen(port, () => {
-    console.log("Server started at port " + port);
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
 });
 
 /**GET: Setting global variable for the logged in user */
